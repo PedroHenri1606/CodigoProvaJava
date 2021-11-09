@@ -14,9 +14,9 @@ public class CinemaView {
     SessaoView sessaoView = new SessaoView();
 
 
-    public void menu(){
+    public void menu() {
         int opcao;
-        do{
+        do {
             this.menuCinema();
             opcao = leitura.nextInt();
 
@@ -34,9 +34,10 @@ public class CinemaView {
                     this.cinemaSelecao();
                     break;
             }
-        } while(opcao !=0);
+        } while (opcao != 0);
     }
-    public void menuCinema(){
+
+    public void menuCinema() {
         System.out.println("==================================");
         System.out.println("=    [1] - Cadastrar Cinemas     =");
         System.out.println("=    [2] - Listar Cinemas        =");
@@ -46,69 +47,63 @@ public class CinemaView {
         System.out.println("==================================");
     }
 
-    public void cadastrar(){
-       Scanner scan = new Scanner(System.in);
+    public void cadastrar() {
+        Scanner scan = new Scanner(System.in);
         IdCinema idCinema = new IdCinema();
 
         CinemaModel cinemaModel = new CinemaModel();
         System.out.println("==================================");
         System.out.println("=      Cadastro de Cinemas       =");
-        System.out.print  ("= Nome: "); cinemaModel.setNome(scan.nextLine());
-        System.out.print  ("= CNPJ: "); cinemaModel.setCnpj(Long.parseLong(scan.nextLine()));
+        System.out.print("= Nome: ");
+        cinemaModel.setNome(scan.nextLine());
+        System.out.print("= CNPJ: ");
+        cinemaModel.setCnpj(Long.parseLong(scan.nextLine()));
         System.out.println("==================================");
         cinemaModel.setIdCinema(Integer.toString(idCinema.determinarID()));
         cinemaController.adicionar(cinemaModel);
     }
 
-    public void listarCinema(){
+    public void listarCinema() {
         System.out.println("==================================");
         List<CinemaModel> cinemasCadastrados = cinemaController.listar();
-        for(int i =0; i < cinemasCadastrados.size();i++){
-            System.out.println(cinemasCadastrados.get(i).getIdCinema() + " | " + cinemasCadastrados.get(i).getNome()+ " | " + cinemasCadastrados.get(i).getCnpj()+ " Posição: "+ i);
+        for (int i = 0; i < cinemasCadastrados.size(); i++) {
+            System.out.println(cinemasCadastrados.get(i).getIdCinema() + " | " + cinemasCadastrados.get(i).getNome() + " | " + cinemasCadastrados.get(i).getCnpj() + " Posição: " + i);
         }
         System.out.println("==================================");
 
     }
 
-    public void listarCinemaSelecao(){
+    public void listarCinemaSelecao() {
         System.out.println("==================================");
         List<CinemaModel> cinemasCadastrados = cinemaController.listar();
-        for(int i =0; i < cinemasCadastrados.size();i++){
-            System.out.println(cinemasCadastrados.get(i).getIdCinema() + " | " + cinemasCadastrados.get(i).getNome()+ " | " + cinemasCadastrados.get(i).getCnpj());
+        for (int i = 0; i < cinemasCadastrados.size(); i++) {
+            System.out.println(cinemasCadastrados.get(i).getIdCinema() + " | " + cinemasCadastrados.get(i).getNome() + " | " + cinemasCadastrados.get(i).getCnpj());
         }
         System.out.println("==================================");
 
     }
 
-    public void remover(){
+    public void remover() {
         Scanner scan = new Scanner(System.in);
         this.listarCinema();
-        System.out.print  (" Selecione a Posição que deseja excluir : "); int escolha = Integer.parseInt(scan.nextLine());
+        System.out.print(" Selecione a Posição que deseja excluir : ");
+        int escolha = Integer.parseInt(scan.nextLine());
         System.out.println("==================================");
         cinemaController.remover(escolha);
     }
 
-    public void cinemaSelecao(){
+    public void cinemaSelecao() {
         Scanner scan = new Scanner(System.in);
         this.listarCinemaSelecao();
-        System.out.print  (" Selecione o Cinema pelo ID: "); String id = scan.nextLine();
+        System.out.print(" Selecione o Cinema pelo ID: ");
+        String id = scan.nextLine();
 
-       if(cinemaController.login(id)) {
-           this.menuSessoes();
-       } else {
-           System.out.println(" ---ID incompativel, tente novamente---");
-       }
+        if (cinemaController.login(id)) {
+            sessaoView.menuSessoes();
+        } else {
+            System.out.println(" ---ID incompativel, tente novamente---");
+        }
 
-    }
-
-    public void menuSessoes(){
-        System.out.println("==================================");
-        System.out.println(" Cinema : " + cinemaController.getNomeCinema() +"\n");
-        System.out.println(" [1] - Criar Sessao ");
-        System.out.println(" [2] - Editar Sessao ");
-        System.out.println(" [3] - Remover Sessao ");
-        System.out.println(" [0] - Voltar ");
-        System.out.println("==================================");
     }
 
 }

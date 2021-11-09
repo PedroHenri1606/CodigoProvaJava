@@ -73,5 +73,9 @@ public class CinemaDAO {
 
     public String getNomeCinema(){
         return cinemas.get(cinemaAtual).getNome();}
+
+    public String getIdCinema(){
+       return cinemas.get(cinemaAtual).getIdCinema();}
     }
+
 

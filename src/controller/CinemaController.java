@@ -22,5 +22,6 @@ public class CinemaController {
     }
     public boolean login (String tmp1){ return cinemaDAO.login(tmp1);}
     public String getNomeCinema(){ return cinemaDAO.getNomeCinema();}
+    public String getIdCinema(){ return cinemaDAO.getIdCinema();}
     }
 

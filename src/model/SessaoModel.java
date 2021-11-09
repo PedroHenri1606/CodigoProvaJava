@@ -4,6 +4,7 @@ public class SessaoModel {
     private String idSessao;
     private String nomeFilme;
     private String hora;
+    private String idCinema;
 
     public SessaoModel() {
     }
@@ -32,8 +33,16 @@ public class SessaoModel {
         this.hora = hora;
     }
 
+    public String getIdCinema() {
+        return idCinema;
+    }
+
+    public void setIdCinema(String idCinema) {
+        this.idCinema = idCinema;
+    }
+
     @Override
     public String toString() {
-        return this.idSessao + ";" + this.nomeFilme + ";" + this.hora;
+        return this.idSessao + "|" + this.nomeFilme + "|" + this.hora + "|" + this.idCinema;
     }
 }
