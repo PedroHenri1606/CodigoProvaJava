@@ -9,7 +9,7 @@ import java.util.StringTokenizer;
 
 public class CinemaDAO {
     static List<CinemaModel> cinemas = new ArrayList<>();
-
+    static int cinemaAtual;
 
     public void adicionar(CinemaModel cinemaModel) {
         cinemas.add(cinemaModel);
@@ -59,4 +59,19 @@ public class CinemaDAO {
          cinemas.remove(i);
          this.salvar();
     }
-}
+
+    public boolean login (String tmp1){
+        for (int i = 0; i < cinemas.size(); i++){
+            if (tmp1.equals(cinemas.get(i).getIdCinema())){
+                System.out.println(" ---Cinema Selecionado com sucesso--- ");
+                cinemaAtual = i;
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public String getNomeCinema(){
+        return cinemas.get(cinemaAtual).getNome();}
+    }
+

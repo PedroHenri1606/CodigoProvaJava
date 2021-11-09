@@ -1,18 +1,11 @@
 package model;
 
 public class SessaoModel {
-    private String horario;
     private String idSessao;
+    private String nomeFilme;
+    private String hora;
 
     public SessaoModel() {
-    }
-
-    public String getHorario() {
-        return horario;
-    }
-
-    public void setHorario(String horario) {
-        this.horario = horario;
     }
 
     public String getIdSessao() {
@@ -23,8 +16,24 @@ public class SessaoModel {
         this.idSessao = idSessao;
     }
 
+    public String getNomeFilme() {
+        return nomeFilme;
+    }
+
+    public void setNomeFilme(String nomeFilme) {
+        this.nomeFilme = nomeFilme;
+    }
+
+    public String getHora() {
+        return hora;
+    }
+
+    public void setHora(String hora) {
+        this.hora = hora;
+    }
+
     @Override
     public String toString() {
-        return this.horario +";"+ this.idSessao;
+        return this.idSessao + ";" + this.nomeFilme + ";" + this.hora;
     }
 }

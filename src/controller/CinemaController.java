@@ -20,4 +20,7 @@ public class CinemaController {
     public void remover(int i){
         cinemaDAO.remover(i);
     }
-}
+    public boolean login (String tmp1){ return cinemaDAO.login(tmp1);}
+    public String getNomeCinema(){ return cinemaDAO.getNomeCinema();}
+    }
+

@@ -11,6 +11,7 @@ import java.util.Scanner;
 public class CinemaView {
     Scanner leitura = new Scanner(System.in);
     CinemaController cinemaController = new CinemaController();
+    SessaoView sessaoView = new SessaoView();
 
 
     public void menu(){
@@ -29,14 +30,18 @@ public class CinemaView {
                 case 3:
                     this.remover();
                     break;
+                case 4:
+                    this.cinemaSelecao();
+                    break;
             }
         } while(opcao !=0);
     }
     public void menuCinema(){
         System.out.println("==================================");
         System.out.println("=    [1] - Cadastrar Cinemas     =");
-        System.out.println("=    [2] - Escolher Cinemas      =");
+        System.out.println("=    [2] - Listar Cinemas        =");
         System.out.println("=    [3] - Remover Cinemas       =");
+        System.out.println("=    [4] - Escolher Cinema       =");
         System.out.println("=    [0] - SAIR                  =");
         System.out.println("==================================");
     }
@@ -78,9 +83,32 @@ public class CinemaView {
     public void remover(){
         Scanner scan = new Scanner(System.in);
         this.listarCinema();
-        System.out.print  (" Escolha a opção a ser removido: "); int escolha = Integer.parseInt(scan.nextLine());
+        System.out.print  (" Selecione a Posição que deseja excluir : "); int escolha = Integer.parseInt(scan.nextLine());
         System.out.println("==================================");
         cinemaController.remover(escolha);
+    }
+
+    public void cinemaSelecao(){
+        Scanner scan = new Scanner(System.in);
+        this.listarCinemaSelecao();
+        System.out.print  (" Selecione o Cinema pelo ID: "); String id = scan.nextLine();
+
+       if(cinemaController.login(id)) {
+           this.menuSessoes();
+       } else {
+           System.out.println(" ---ID incompativel, tente novamente---");
+       }
+
+    }
+
+    public void menuSessoes(){
+        System.out.println("==================================");
+        System.out.println(" Cinema : " + cinemaController.getNomeCinema() +"\n");
+        System.out.println(" [1] - Criar Sessao ");
+        System.out.println(" [2] - Editar Sessao ");
+        System.out.println(" [3] - Remover Sessao ");
+        System.out.println(" [0] - Voltar ");
+        System.out.println("==================================");
     }
 
 }

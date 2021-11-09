@@ -13,8 +13,5 @@ public class Main {
        cinemaController.carregar();
        cinemaView.menu();
 
-        Scanner leitura = new Scanner(System.in);
-
-
     }
 }
